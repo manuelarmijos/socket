@@ -105,13 +105,13 @@ app.get('/', (req, res) => {
 
 // app.use('/s/solicitud/', solicitud);
 
-config.coneccionBase(function (res) {
+/* config.coneccionBase(function (res) {
   if (res) {
     console.log('Exito en la conección a la base de datos')
   } else {
     console.log('Revisar urgentr no se logró conectarse a la base')
   }
-});
+}); */
 
 amqp.connect('amqp://admin:admin@127.0.0.1:5672', function (error0, connection) {
   if (error0) {

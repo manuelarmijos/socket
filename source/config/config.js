@@ -1,13 +1,13 @@
 require("dotenv").config();
 
-var serverPort = 3005;
-var sessionSecret = process.env.SESSION_SECRET;
-var rate = {
+exports.serverPort = 3005;
+exports.sessionSecret = process.env.SESSION_SECRET;
+exports.rate = {
     windowMs: 5 * 60 * 1000,
     max: 100,
 };
 
-var mysql = require('mysql');
+/* var mysql = require('mysql');
 var pool = mysql.createPool({
     connectionLimit: 100,
     host: '169.62.217.189',
@@ -60,4 +60,4 @@ module.exports = {
     rate,
     sessionSecret
 
-};
+}; */
