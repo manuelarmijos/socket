@@ -153,7 +153,7 @@ var server = app.listen(port, (err) => {
 });
 
 var socketIO = require('socket.io')(server, {
-  allowEIO3: true
+  allowEIO3: false
 });
 
 socketIO.on('connection',
