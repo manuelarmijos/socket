@@ -18,8 +18,14 @@ var pool = mysql.createPool({
 
 
 function coneccionBase(callback) {
+    var connection = mysql.createConnection({
+        host: '169.62.217.189',
+        user: 'M4nu3l4rm1j0s',
+        password: 'UayN7X**J8YsH3!q*9W_wirk_ALHCM',
+        database: 'ktaxiSocket'
+    });
 
-    pool.connect(function (err) {
+    connection.connect(function (err) {
         if (err) {
             console.error('error connecting: ' + err.stack);
             return callback(false);
