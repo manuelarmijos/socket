@@ -105,13 +105,13 @@ app.get('/', (req, res) => {
 
 // app.use('/s/solicitud/', solicitud);
 
-/* config.coneccionBase(function (res) {
+config.coneccionBase(function (res) {
   if (res) {
     console.log('Exito en la conección a la base de datos')
   } else {
     console.log('Revisar urgentr no se logró conectarse a la base')
   }
-}); */
+});
 
 amqp.connect('amqp://admin:admin@127.0.0.1:5672', function (error0, connection) {
   if (error0) {
@@ -162,23 +162,23 @@ socketIO.on('connection',
     socket.on('autenticar', (token, callback) => {
       console.log('Se envio un emit para autenticar al cliente')
       if (token) {
-        /*  jwt.verify(token, process.env.SECRETTOKEN, function (err, decoded) {
-           if (err) {
-             console.log('Token invalido');
-             return callback({
-               en: -1,
-               m: 'No se pudo autenticar'
-             })
-           }
-           console.log(decoded) // bar
-           socket.auth = true;
-           console.log('verificado el token: ' + token);
-           console.log('token');
-           callback({
-             en: 1,
-             m: 'Autenticado con éxito'
-           })
-         }); */
+        jwt.verify(token, process.env.SECRETTOKEN, function (err, decoded) {
+          if (err) {
+            console.log('Token invalido');
+            return callback({
+              en: -1,
+              m: 'No se pudo autenticar'
+            })
+          }
+          console.log(decoded) // bar
+          socket.auth = true;
+          console.log('verificado el token: ' + token);
+          console.log('token');
+          callback({
+            en: 1,
+            m: 'Autenticado con éxito'
+          })
+        });
       } else {
         callback({
           en: -1,
