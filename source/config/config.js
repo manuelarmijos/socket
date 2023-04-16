@@ -55,6 +55,7 @@ function ejecutarsql() {
 
 module.exports = {
     coneccionBase: coneccionBase,
-    ejecutarsql: ejecutarsql
+    ejecutarsql: ejecutarsql,
+    serverPort
 
 };
