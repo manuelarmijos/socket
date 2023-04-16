@@ -147,10 +147,21 @@ socketIO.on('connection',
     console.log('a user connected');
     console.log(socket.id)
 
-    socket.on('verificar', (msg, callback) => {
-      console.log('Se envio un emit')
-      console.log('verificado: ' + msg);
-      callback('Si se logro verificar todo')
+    socket.on('autenticar', (token, callback) => {
+      console.log('Se envio un emit para autenticar al cliente')
+      if (token) {
+        socket.auth = true;
+        console.log('verificado el token: ' + token);
+        callback({
+          en: 1,
+          m: 'Autenticado con éxito'
+        })
+      } else {
+        callback({
+          en: -1,
+          m: 'No se pudo autenticar'
+        })
+      }
     });
   });
 
