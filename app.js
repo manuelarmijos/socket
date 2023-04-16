@@ -15,8 +15,11 @@ const helmet = require("helmet");
 var amqp = require('amqplib/callback_api');
 
 
+app.use(cors({
+  origin: 'http://localhost:8080',
+  credentials: true
+}))
 
-app.use(cors());
 app.use(helmet());
 
 app.use(responseTime());
