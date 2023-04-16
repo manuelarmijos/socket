@@ -152,7 +152,9 @@ var server = app.listen(port, (err) => {
   console.log(`SERVIDOR CORRIENDO PUERTO: ${port}`);
 });
 
-var socketIO = require('socket.io')(server);
+var socketIO = require('socket.io')(server, {
+  allowEIO3: true
+});
 
 socketIO.on('connection',
   (socket) => {
