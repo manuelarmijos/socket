@@ -165,7 +165,7 @@ socketIO.on('connection',
       console.log('Se envio un emit para autenticar al cliente')
       console.log(token)
       if (token) {
-        jwt.verify(token, process.env.SECRETTOKEN, function (err, decoded) {
+        jwt.verify(token.token, process.env.SECRETTOKEN, function (err, decoded) {
           if (err) {
             console.log(err)
             console.log('Token invalido');
