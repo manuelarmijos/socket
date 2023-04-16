@@ -2,7 +2,7 @@ require("dotenv").config();
 
 let serverPort = 3005;
 exports.sessionSecret = process.env.SESSION_SECRET;
-exports.rate = {
+let rate = {
     windowMs: 5 * 60 * 1000,
     max: 100,
 };
@@ -56,6 +56,7 @@ function ejecutarsql() {
 module.exports = {
     coneccionBase: coneccionBase,
     ejecutarsql: ejecutarsql,
-    serverPort
+    serverPort,
+    rate
 
 };
