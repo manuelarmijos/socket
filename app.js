@@ -179,8 +179,8 @@ socketIO.on('connection',
           console.log('verificado el token: ' + token);
           console.log('token');
           if (decoded.cliente) {
-            let data = JSON.parse(decoded.cliente);
-            config.ejecutarsql('INSERT INTO ktaxiSocket.socket (idUsuario, socketId, fecha_registro) VALUES (?,?) ON DUPLICATE KEY UPDATE socketId = ?  ;', [data[0].id, socket.id, socket.id], function (res) {
+            ///let data = JSON.parse(decoded.cliente);
+            config.ejecutarsql('INSERT INTO ktaxiSocket.socket (idUsuario, socketId, fecha_registro) VALUES (?,?) ON DUPLICATE KEY UPDATE socketId = ?  ;', [cliente[0].id, socket.id, socket.id], function (res) {
               if (res.en == 1)
                 console.log('SQL EJECUTADO - REGISTRO GUARDADO')
               else
