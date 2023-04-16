@@ -20,6 +20,7 @@
     "express-winston": "^4.2.0",
     "helmet": "^6.0.1",
     "http-proxy-middleware": "^2.0.6",
+    "jsonwebtoken": "^9.0.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.15",
     "response-time": "^2.3.2",
