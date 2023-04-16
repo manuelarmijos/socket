@@ -105,7 +105,7 @@ app.get('/', (req, res) => {
 // app.use('/s/solicitud/', solicitud);
 
 config.coneccionBase(function (res) {
-  if (res.en == 1) {
+  if (res) {
     console.log('Exito en la conección a la base de datos')
   } else {
     console.log('Revisar urgentr no se logró conectarse a la base')
