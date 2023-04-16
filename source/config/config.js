@@ -36,7 +36,7 @@ function coneccionBase(callback) {
     });
 }
 
-function ejecutarsql() {
+function ejecutarsql(query, valores, callback) {
     pool.query(query, valores, function (error, results, fields) {
         if (error) {
             console.log(error);
