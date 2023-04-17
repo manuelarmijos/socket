@@ -16,6 +16,20 @@ function enviarEmit(data) {
         }
         else
             console.log('SQL no EJECUTADO - REGISTRO no GUARDADO')
+    });
+    config.ejecutarsqlSelect('SELECT socketId FROM  ktaxiSocket.socketConductor where idConductor = ? ;', [d.id], function (res) {
+        if (res.en == 1) {
+            console.log('Socket del conductor encontrado')
+            if (res.data.length > 0) {
+                console.log(res.data)
+                console.log(res.data[0])
+                console.log(res.data[0].socketId)
+                socketio.to(res.data[0].socketId).emit("dataCliente", d);
+                console.log('Socket del conductor enviado correctamente')
+            }
+        }
+        else
+            console.log('SQL no EJECUTADO - REGISTRO no GUARDADO')
     })
 }
 
