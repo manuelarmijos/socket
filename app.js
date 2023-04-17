@@ -113,6 +113,8 @@ config.coneccionBase(function (res) {
   }
 });
 
+global.rabbit;
+
 amqp.connect('amqp://admin:admin@127.0.0.1:5672', function (error0, connection) {
   if (error0) {
     console.log('ERROR AL conectarse a rabbit')
@@ -125,20 +127,22 @@ amqp.connect('amqp://admin:admin@127.0.0.1:5672', function (error0, connection) 
       console.log(error1)
       throw error1;
     }
+    rabbit = channel;
     console.log('Coneccion exitosa a rabbit')
-    var queue = 'hello1';
+    var queue = 'enviarEmit';
 
     channel.assertQueue(queue, {
       durable: true
     });
 
-    console.log(" [*] Esperando mensajes en in %s.", queue);
-    channel.consume(queue, function (msg) {
+    rabbit.consume(queue1, function (msg) {
       var secs = msg.content.toString().split('.').length - 1;
-      console.log(" [x] Received %s", msg.content.toString());
+      console.log('Recibiendo mensaje de condutor con la data del conductor')
+      console.log(" Data recibida", msg.content.toString());
+      //conductor.buscarCondcutorLibre();
       setTimeout(function () {
         console.log(" [x] Done");
-        channel.ack(msg); // ACK permite avisar a rabbit que el mensaje ya fue procesado y se puede eliminar
+        rabbit.ack(msg); // ACK permite avisar a rabbit que el mensaje ya fue procesado y se puede eliminar
       }, 10000);
     }, {
       // noAck: true Una vez que llego el mensaje no se vuelve a notificar si pasa algo
