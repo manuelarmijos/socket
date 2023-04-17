@@ -196,6 +196,14 @@ socketio.on('connection',
             })
           } else {
             console.log('El token no es de cliente')
+            if (decoded.conductor) {
+              config.ejecutarsql('INSERT INTO ktaxiSocket.socketConductor (idConductor, socketId, fecha_registro) VALUES (?,?, now()) ON DUPLICATE KEY UPDATE socketId = ?  ;', [decoded.conductor[0].id, socket.id, socket.id], function (res) {
+                if (res.en == 1)
+                  console.log('SQL EJECUTADO - REGISTRO GUARDADO de conductor')
+                else
+                  console.log('SQL no EJECUTADO - REGISTRO no GUARDADO de conductor')
+              })
+            }
           }
           callback({
             en: 1,
