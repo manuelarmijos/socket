@@ -7,6 +7,7 @@ function enviarEmit(data) {
         if (res.en == 1) {
             console.log('Socket del cliente encontrado')
             console.log(res.data)
+            console.log(res.data[0])
             //socketio.to('').emit("dataConductor", JSON.stringify({ name: "John" }));
             console.log('Socket del cliente enviado correctamente')
         }
