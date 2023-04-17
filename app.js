@@ -135,7 +135,7 @@ amqp.connect('amqp://admin:admin@127.0.0.1:5672', function (error0, connection) 
       durable: true
     });
 
-    rabbit.consume(queue1, function (msg) {
+    rabbit.consume(queue, function (msg) {
       var secs = msg.content.toString().split('.').length - 1;
       console.log('Recibiendo mensaje de condutor con la data del conductor')
       console.log(" Data recibida", msg.content.toString());
