@@ -52,10 +52,28 @@ function ejecutarsql(query, valores, callback) {
         // ...
     });
 }
+function ejecutarsqlSelect(query, valores, callback) {
+    pool.query(query, valores, function (error, results, fields) {
+        if (error) {
+            console.log(error);
+            callback({
+                en: -1,
+                m: 'Error mysql'
+            })
+        };
+        callback({
+            en: 1,
+            m: 'Mysql ejecutado',
+            data: results
+        })
+        // ...
+    });
+}
 
 module.exports = {
     coneccionBase: coneccionBase,
     ejecutarsql: ejecutarsql,
+    ejecutarsqlSelect: ejecutarsqlSelect,
     serverPort,
     rate,
     sessionSecret

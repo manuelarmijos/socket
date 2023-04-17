@@ -14,6 +14,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 var amqp = require('amqplib/callback_api');
 var jwt = require('jsonwebtoken');
+var eventos = require('./source/socket/eventos.js');
 
 
 app.use(cors({
@@ -139,6 +140,7 @@ amqp.connect('amqp://admin:admin@127.0.0.1:5672', function (error0, connection) 
       var secs = msg.content.toString().split('.').length - 1;
       console.log('Recibiendo mensaje de condutor con la data del conductor')
       console.log(" Data recibida", msg.content.toString());
+      eventos.enviarEmit(msg.content.toString());
       //conductor.buscarCondcutorLibre();
       setTimeout(function () {
         console.log(" [x] Done");
@@ -160,8 +162,11 @@ var socketIO = require('socket.io')(server, {
   allowEIO3: true
 });
 
+global.socketio;
+
 socketIO.on('connection',
   (socket) => {
+    socketio = socket;
     console.log('a user connected');
     console.log(socket.id)
 
