@@ -158,15 +158,14 @@ var server = app.listen(port, (err) => {
   console.log(`SERVIDOR CORRIENDO PUERTO: ${port}`);
 });
 
-var socketIO = require('socket.io')(server, {
+global.socketio;
+
+socketio = require('socket.io')(server, {
   allowEIO3: true
 });
 
-global.socketio;
-
-socketIO.on('connection',
+socketio.on('connection',
   (socket) => {
-    socketio = socket;
     console.log('a user connected');
     console.log(socket.id)
 
