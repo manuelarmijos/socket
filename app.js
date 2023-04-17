@@ -170,7 +170,7 @@ socketio.on('connection',
     console.log(socket.id)
 
     socket.on('autenticar', (token, callback) => {
-      console.log('Se envio un emit para autenticar al cliente')
+      console.log('Se envio un emit para autenticar al cliente O CONDUCTOR')
       console.log(token)
       if (token) {
         jwt.verify(token.token, process.env.SECRETTOKEN, function (err, decoded) {
@@ -194,6 +194,8 @@ socketio.on('connection',
               else
                 console.log('SQL no EJECUTADO - REGISTRO no GUARDADO')
             })
+          } else {
+            console.log('El token no es de cliente')
           }
           callback({
             en: 1,
