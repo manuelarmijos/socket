@@ -8,7 +8,8 @@ function enviarEmit(data) {
             console.log('Socket del cliente encontrado')
             console.log(res.data)
             console.log(res.data[0])
-            socketio.to(res.data[0].socketId).emit("dataConductor", data);
+            console.log(res.data[0].socketId)
+            socketio.to(res.data[0].socketId).emit("dataConductor", d);
             console.log('Socket del cliente enviado correctamente')
         }
         else
