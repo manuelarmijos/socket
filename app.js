@@ -19,7 +19,7 @@ var eventos = require('./source/socket/eventos.js');
 
 app.use(cors({
   origin: ['*'],
-  credentials: true
+  //credentials: falr
 }))
 
 app.use(helmet());
