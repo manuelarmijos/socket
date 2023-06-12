@@ -18,7 +18,7 @@ var eventos = require('./source/socket/eventos.js');
 
 
 app.use(cors({
-  origin: ['http://sweb.ktaxi.com.ec'],
+  origin: ['https://sweb.ktaxi.com.ec'],
   credentials: true
 }))
 
