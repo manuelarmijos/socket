@@ -17,10 +17,8 @@ var jwt = require('jsonwebtoken');
 var eventos = require('./source/socket/eventos.js');
 
 
-app.use(cors({
-  origin: ['https://sweb.ktaxi.com.ec', 'http://sweb.ktaxi.com.ec'],
-  credentials: true
-}))
+app.use(cors());
+app.options('*', cors());
 
 app.use(helmet());
 
