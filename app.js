@@ -18,8 +18,8 @@ var eventos = require('./source/socket/eventos.js');
 
 
 app.use(cors({
-  origin: ['*'],
-  //credentials: falr
+  origin: ['https://sweb.ktaxi.com.ec', 'http://sweb.ktaxi.com.ec'],
+  credentials: true
 }))
 
 app.use(helmet());
